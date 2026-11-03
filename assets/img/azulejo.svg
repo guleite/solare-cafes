@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- azulejo inspirado na estampa do pacote: flores ligadas por folhas em treliça e quadrados escalonados -->
+  <defs>
+    <path id="folha" d="M0 -9 Q12 -25 0 -42.4 Q-12 -25 0 -9Z"/>
+    <path id="petala" d="M0 -6 C10 -9 12 -22 0 -27 C-12 -22 -10 -9 0 -6Z"/>
+    <g id="flor">
+      <g fill="#E19350">
+        <use href="#folha" transform="rotate(45)"/>
+        <use href="#folha" transform="rotate(135)"/>
+        <use href="#folha" transform="rotate(225)"/>
+        <use href="#folha" transform="rotate(315)"/>
+      </g>
+      <g fill="#F0B783">
+        <use href="#petala"/>
+        <use href="#petala" transform="rotate(90)"/>
+        <use href="#petala" transform="rotate(180)"/>
+        <use href="#petala" transform="rotate(270)"/>
+      </g>
+      <circle r="7" fill="#E19350"/>
+      <circle r="2.6" fill="#F3F0E4" stroke="none"/>
+    </g>
+    <g id="bloco">
+      <rect x="-23" y="-23" width="46" height="46" fill="#E19350"/>
+      <rect x="-23" y="-23" width="25" height="25" fill="#43322A"/>
+      <rect x="-2" y="-2" width="25" height="25" fill="#43322A"/>
+      <rect x="-6" y="-6" width="12" height="12" fill="#F0B783"/>
+    </g>
+  </defs>
+  <rect width="120" height="120" fill="#43322A"/>
+  <g stroke="#F3F0E4" stroke-width="2.2" stroke-linejoin="round">
+    <use href="#bloco" x="60" y="0"/>
+    <use href="#bloco" x="60" y="120"/>
+    <use href="#bloco" transform="translate(0 60) rotate(90)"/>
+    <use href="#bloco" transform="translate(120 60) rotate(90)"/>
+    <use href="#flor" x="60" y="60"/>
+    <use href="#flor" x="0" y="0"/>
+    <use href="#flor" x="120" y="0"/>
+    <use href="#flor" x="0" y="120"/>
+    <use href="#flor" x="120" y="120"/>
+  </g>
+</svg>
