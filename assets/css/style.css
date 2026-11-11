@@ -491,6 +491,31 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .product:hover .product__media--photo img { transform: scale(1.06); }
 .product--drip .product__body > .btn, .product--kit .product__body > .btn { align-self: flex-start; margin-top: auto; }
 
+/* Linhas Fiori, Virtuoso, Aurora e Astro: cor de fundo tirada do rótulo de cada pacote, como o petróleo do Lumiar */
+.product-row--lines { margin-bottom: 28px; }
+.product--line { grid-template-rows: auto 1fr; color: var(--creme); }
+.product--line .product__media { min-height: 380px; }
+.product--line .product__media img { width: min(210px, 50%); }
+.product--line .product__body { gap: 14px; }
+.product--line .product__body > .btn { align-self: flex-start; margin-top: auto; }
+.product__name--line { font-size: clamp(2.6rem, 4.6vw, 3.8rem); }
+.product--line .product__tagline { font-size: 1.3rem; }
+.product--fiori { background: #C1764A; color: var(--cafe-900); }
+.product--virtuoso { background: #641D2F; }
+.product--aurora { background: #7A5A3B; }
+.product--astro { background: #D5B21D; color: var(--cafe-900); }
+.product--astro .product__kicker { color: var(--cafe-700); }
+.product--astro .product__tagline { color: var(--cafe); }
+.product--fiori .product__kicker, .product--fiori .product__tagline { color: var(--cafe-900); }
+.product--fiori .notes li, .product--astro .notes li { border-color: rgba(43, 32, 26, .3); }
+.product--fiori .specs, .product--astro .specs { border-top-color: rgba(43, 32, 26, .2); }
+.product--fiori .specs dt::before, .product--astro .specs dt::before { color: var(--cafe); }
+.product--fiori .product__name svg, .product--astro .product__name svg { fill: var(--cafe); }
+.product--virtuoso .btn--cream { color: #4A1522; }
+.product--virtuoso .btn--cream svg { fill: #641D2F; }
+.product--aurora .btn--cream { color: #4E3824; }
+.product--aurora .btn--cream svg { fill: #7A5A3B; }
+
 /* ---------- Origem ---------- */
 .origin { padding: var(--sec) 0; background: var(--papel); }
 .origins { display: grid; grid-template-columns: 1.25fr 1fr .8fr; gap: 24px; align-items: end; }
@@ -877,7 +902,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   .stage__branch { right: -6%; }
   .stats { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
   .product__foot { flex-direction: column; align-items: stretch; }
-  .product__foot .btn, .product--drip .product__body > .btn, .product--kit .product__body > .btn { width: 100%; align-self: stretch; }
+  .product__foot .btn, .product--drip .product__body > .btn, .product--kit .product__body > .btn, .product--line .product__body > .btn { width: 100%; align-self: stretch; }
   .toggle { align-self: flex-start; }
   .specs--compact { grid-template-columns: 1fr 1fr; }
   .origins { grid-template-columns: 1fr; }

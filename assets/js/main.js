@@ -468,6 +468,10 @@ const Qualify = (function () {
         { v: "Quero conhecer as opções", sub: "A gente apresenta os cafés" },
       ] : [
         { v: "Lumiar · 250 g", sub: "Torra média · notas de chocolate" },
+        { v: "Fiori · Lavanda", sub: "Floral e herbal · torra clara" },
+        { v: "Virtuoso (licor de goiaba ou cereja e maracujá)", sub: "Frutado · fermentado" },
+        { v: "Aurora · Caramelo e cana de açúcar", sub: "Doce · acidez equilibrada" },
+        { v: "Astro · Caramelo e mel", sub: "Cafés raros · origens diversas" },
         { v: "Drip Coffee Catuaí Amarelo", sub: "10 sachês · caramelo e melaço" },
         { v: "Kit presente com caneca", sub: "Lumiar, drip coffee e caneca" },
         { v: "Quero ajuda para escolher", sub: "A gente indica pelo seu gosto" },
@@ -475,7 +479,7 @@ const Qualify = (function () {
     },
     {
       id: "preparo", type: "single", layout: "two", kicker: "Moagem",
-      when: (d) => isPessoal(d) && d.formato !== "Em grãos" && (d.interesse || []).some((i) => /Lumiar|Kit|ajuda/.test(i)),
+      when: (d) => isPessoal(d) && d.formato !== "Em grãos" && (d.interesse || []).some((i) => /Lumiar|Fiori|Virtuoso|Aurora|Astro|Kit|ajuda/.test(i)),
       title: (d) => d.perfil === "Presentear alguém" ? "Quem vai ganhar prepara o café como?" : "Como você prepara o seu café?",
       hint: "Assim o café chega na moagem certa para o método.",
       options: (d) => {
