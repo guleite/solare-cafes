@@ -11,6 +11,14 @@ Proposta de layout desenvolvida pela Concept Agência. Página estática (HTML, 
 - `assets/css/style.css`: estilos e animações
 - `assets/js/main.js`: interações e o popup que qualifica o contato e abre o WhatsApp
 - `assets/img/`: logo, embalagens e imagens tratadas a partir do material da marca
+- `assets/fonts/Elephant.ttf`: fonte dos títulos e destaques (MIV)
+
+## Fontes
+
+Conforme o MIV: **Elephant** nos títulos e destaques, **Sofia Pro** nos textos.
+
+- Sofia Pro e Abril Fatface (reserva da Elephant) vêm do kit "Solare Cafés - site" do Adobe Fonts. O kit depende de uma assinatura Creative Cloud ativa e só funciona nos domínios cadastrados nele.
+- **Licença pendente:** o `Elephant.ttf` é a cópia que vem com o Microsoft Office, que não permite uso como fonte web. Antes de publicar de verdade, comprar a licença web da Elephant (Monotype) e trocar o arquivo pelo `.woff2` licenciado.
 
 ## Antes de publicar de verdade
 

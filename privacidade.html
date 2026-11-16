@@ -14,8 +14,9 @@
     header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 48px; }
     header img { height: 44px; width: auto; }
     header a { font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
-    h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); line-height: 1; letter-spacing: -.03em; margin: 0 0 24px; }
-    h1 em { font: italic 400 1em "abril-fatface", "Elephant", serif; color: var(--caramelo); }
+    @font-face { font-family: "Elephant"; src: local("Elephant"), local("Elephant-Regular"), url("assets/fonts/Elephant.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+    h1 { font: 400 clamp(2.2rem, 6vw, 3.4rem)/1 "Elephant", "abril-fatface", serif; font-synthesis: none; letter-spacing: -.01em; margin: 0 0 24px; }
+    h1 em { font-style: normal; color: var(--caramelo); }
     h2 { font-size: 1.2rem; margin: 36px 0 8px; }
     p, li { color: var(--ink-soft); }
     a { color: inherit; }
