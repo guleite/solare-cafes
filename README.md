@@ -35,3 +35,5 @@ Enquanto for proposta, a página fica fora do Google (`noindex` e `robots.txt`).
 ## Publicação
 
 GitHub Pages a partir da branch `main`, pasta raiz. Cada push na `main` atualiza o site em cerca de um minuto.
+
+O navegador guarda o CSS e o JS por até 10 minutos. Ao mudar `style.css` ou `main.js`, aumente o `?v=` nos links do `index.html` para os visitantes receberem a versão nova na hora.
