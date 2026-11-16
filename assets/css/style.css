@@ -303,7 +303,10 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   box-shadow: 0 0 0 16px rgba(225, 147, 80, .12), 0 0 0 34px rgba(225, 147, 80, .06), 0 0 140px 30px rgba(225, 147, 80, .35);
 }
 .stage__rays { position: absolute; inset: -1%; width: 102%; stroke: var(--caramelo); stroke-width: 5; stroke-linecap: round; animation: spin 90s linear infinite; }
-.stage__branch { position: absolute; right: -12%; top: -2%; width: 36%; rotate: 8deg; transform-origin: 100% 30%; animation: branch 8s ease-in-out infinite alternate-reverse; }
+/* O ramo vem cortado na borda direita. Espelhado (scale -1 em torno da borda
+   direita da caixa), o corte cai em x = left + width, escondido atrás do pacote,
+   e as folhas abrem para fora. Giro horário puxa a base cortada para baixo do pacote. */
+.stage__branch { position: absolute; left: 18%; top: 4%; width: 46%; scale: -1 1; rotate: 16deg; transform-origin: 100% 30%; animation: branch 8s ease-in-out infinite alternate-reverse; }
 .stage__pack { position: absolute; left: 28%; top: 5%; width: 44%; }
 .stage__pack img {
   width: 100%;
@@ -911,7 +914,6 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   .chip--a { left: 0; top: 20%; }
   .chip--b { right: 0; top: 56%; }
   .chip--c { left: 2%; bottom: 8%; }
-  .stage__branch { right: -6%; }
   .stats { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
   .product__foot { flex-direction: column; align-items: stretch; }
   .product__foot .btn, .product--drip .product__body > .btn, .product--kit .product__body > .btn, .product--line .product__body > .btn { width: 100%; align-self: stretch; }
