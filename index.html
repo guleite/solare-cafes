@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <!-- Fontes da marca via Adobe Fonts (kit "Solare Cafés - site"): Sofia Pro + Abril Fatface no lugar da Elephant -->
   <link rel="stylesheet" href="https://use.typekit.net/byu8pit.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116-2">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261119-3">
 </head>
 <body>
 
@@ -100,11 +100,11 @@
       <svg class="stage__rays" viewBox="-300 -300 600 600" data-rays="40" data-r1="236" data-r2="292" data-depth="0.15"></svg>
       <img class="stage__branch" src="assets/img/ramo-direita.webp" alt="" aria-hidden="true" width="257" height="380" data-depth="0.35">
       <div class="stage__pack" data-depth="0.6">
-        <img src="assets/img/pacote-lumiar.webp" alt="Pacote do café Solare Lumiar, 250 g, com estampa de azulejos em caramelo e marrom" width="541" height="896">
+        <img src="assets/img/cafes/lumiar-recorte.webp" alt="Pacote do café Solare Lumiar, 250 g, marrom com rótulo verde e faixa de azulejos" width="760" height="861">
       </div>
       <div class="chip chip--a" data-depth="0.9"><svg><use href="#i-star"/></svg> Notas de chocolate</div>
       <div class="chip chip--b" data-depth="1.1"><span>Torra média</span><span class="roast" data-level="3"></span></div>
-      <div class="chip chip--c" data-depth="0.8"><svg class="pin"><use href="#i-pin"/></svg> 960 m · Sul de Minas</div>
+      <div class="chip chip--c" data-depth="0.8"><svg class="pin"><use href="#i-pin"/></svg> 1.000 m · Cristalina, GO</div>
       <div class="beans" aria-hidden="true">
         <svg class="bean" style="--x:8%;--y:16%;--s:34px;--r:-30deg;--t:7s" data-depth="1.4"><use href="#i-bean"/></svg>
         <svg class="bean" style="--x:86%;--y:10%;--s:26px;--r:40deg;--t:9s" data-depth="1.7"><use href="#i-bean"/></svg>
@@ -148,7 +148,7 @@
       <p class="manifesto" data-words data-accent="origem,cuidado,luz">A Solare nasceu em Brasília para aproximar quem ama café de grãos com origem, cuidado e personalidade. Cada café é escolhido pela xícara que entrega: doce, equilibrada e cheia de luz.</p>
       <dl class="stats">
         <div class="reveal" style="--d:.05s"><dt><span data-count="100">0</span>%</dt><dd>arábica, da variedade Catuaí Amarelo</dd></div>
-        <div class="reveal" style="--d:.15s"><dt><span data-count="960">0</span> m</dt><dd>de altitude na origem do Lumiar</dd></div>
+        <div class="reveal" style="--d:.15s"><dt><span data-count="1000">0</span> m</dt><dd>de altitude na origem do Lumiar</dd></div>
         <div class="reveal" style="--d:.25s"><dt><span data-count="2">0</span></dt><dd>origens: Sul de Minas e Cerrado goiano</dd></div>
         <div class="reveal" style="--d:.35s"><dt><span data-count="12">0</span> g</dt><dd>por sachê de drip coffee, na dose certa</dd></div>
       </dl>
@@ -165,161 +165,256 @@
       <p class="sec-head__lead reveal">Embalagens novas, inspiradas nos azulejos que contam a história do café no Brasil. Por dentro, o que importa: cafés de origem, com notas que você sente na primeira xícara.</p>
     </header>
 
-    <!-- Lumiar -->
-    <article class="product product--lumiar reveal" data-tilt>
-      <div class="product__media">
-        <div class="product__tiles" aria-hidden="true"></div>
-        <div class="product__glow" aria-hidden="true"></div>
-        <img src="assets/img/pacote-lumiar.webp" alt="Pacote Solare Lumiar 250 g" width="541" height="896" loading="lazy">
-        <span class="product__tag">250 g</span>
+    <!-- Vitrine em abas: um café à vista e o nome dos outros logo acima -->
+    <div class="shop reveal" data-shop>
+      <div class="shop__tabs" role="tablist" aria-label="Cafés Solare">
+        <button type="button" role="tab" id="t-lumiar" aria-controls="p-lumiar" aria-selected="true" style="--acc:#7FA368"><i aria-hidden="true"></i>Lumiar</button>
+        <button type="button" role="tab" id="t-fiori" aria-controls="p-fiori" aria-selected="false" tabindex="-1" style="--acc:#AB3F61"><i aria-hidden="true"></i>Fiori</button>
+        <button type="button" role="tab" id="t-virtuoso" aria-controls="p-virtuoso" aria-selected="false" tabindex="-1" style="--acc:#0A9895"><i aria-hidden="true"></i>Virtuoso</button>
+        <button type="button" role="tab" id="t-aurora" aria-controls="p-aurora" aria-selected="false" tabindex="-1" style="--acc:#BD854C"><i aria-hidden="true"></i>Aurora</button>
+        <button type="button" role="tab" id="t-astro" aria-controls="p-astro" aria-selected="false" tabindex="-1" style="--acc:#C8951F"><i aria-hidden="true"></i>Astro</button>
+        <span class="shop__sep" aria-hidden="true"></span>
+        <button type="button" role="tab" id="t-drip" aria-controls="p-drip" aria-selected="false" tabindex="-1" style="--acc:#E19350"><i aria-hidden="true"></i>Drip coffee</button>
+        <button type="button" role="tab" id="t-kit" aria-controls="p-kit" aria-selected="false" tabindex="-1" style="--acc:#F0B783"><i aria-hidden="true"></i>Kit presente</button>
+        <i class="shop__ink" aria-hidden="true"></i>
       </div>
-      <div class="product__body">
-        <p class="product__kicker">Linha especial · Torra média</p>
-        <h3 class="product__name"><svg><use href="#i-star"/></svg>Lumiar</h3>
-        <p class="product__tagline">Claro e vibrante como a luz do sol.</p>
-        <p class="product__desc">Para cafés vivos, com acidez cítrica, corpo leve e frescor na boca. Uma acidez brilhante que termina em chocolate.</p>
-        <ul class="notes"><li>Chocolate</li><li>Acidez cítrica</li><li>Corpo leve</li></ul>
-        <dl class="specs">
-          <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
-          <div><dt>Altitude</dt><dd>960 m</dd></div>
-          <div><dt>Região</dt><dd>Carmo da Cachoeira, MG</dd></div>
-          <div><dt>Processo</dt><dd>Natural</dd></div>
-          <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
-        </dl>
-        <div class="product__foot">
-          <div class="toggle" role="radiogroup" aria-label="Formato do Lumiar">
-            <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
-            <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
-            <i aria-hidden="true"></i>
+
+      <div class="shop__panel" role="tabpanel" id="p-lumiar" aria-labelledby="t-lumiar" style="--acc:#7FA368">
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/cafes/lumiar-frente.webp" srcset="assets/img/cafes/lumiar-frente-760.webp 760w, assets/img/cafes/lumiar-frente.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacote Solare Lumiar 250 g, de frente" width="1400" height="1120">
+            <img src="assets/img/cafes/lumiar-duo.webp" srcset="assets/img/cafes/lumiar-duo-760.webp 760w, assets/img/cafes/lumiar-duo.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacotes Solare Lumiar: frente e verso" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/verso.webp" srcset="assets/img/cafes/verso-760.webp 760w, assets/img/cafes/verso.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Verso do pacote Solare Lumiar, com o texto da marca e o modo de preparo" width="1400" height="1120" loading="lazy">
           </div>
-          <button type="button" class="btn btn--cream magnetic" data-contact data-origem="card-lumiar" data-product="Lumiar · 250 g"><svg><use href="#i-wa"/></svg> Quero o Lumiar</button>
+          <span class="shop__tag">250 g</span>
+          <div class="shop__thumbs" role="group" aria-label="Fotos do Lumiar">
+            <button type="button" aria-pressed="true" aria-label="Frente"><img src="assets/img/cafes/lumiar-frente-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Frente e verso"><img src="assets/img/cafes/lumiar-duo-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Verso"><img src="assets/img/cafes/verso-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+          </div>
+        </div>
+        <div class="shop__body">
+          <p class="shop__kicker">Catuaí Amarelo · Torra média</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Lumiar</h3>
+          <p class="shop__desc">Para cafés vivos, com acidez cítrica, corpo leve e frescor na boca.</p>
+          <p class="shop__line">Claro e vibrante como a luz do sol. Acidez brilhante.</p>
+          <ul class="notes"><li>Caramelo</li><li>Nozes</li><li>Chocolate</li></ul>
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
+            <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
+            <div><dt>Produtor</dt><dd>Zancanaro</dd></div>
+            <div><dt>Processo</dt><dd>Cereja descascada</dd></div>
+            <div><dt>Altitude</dt><dd>1.000 m</dd></div>
+            <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
+          </dl>
+          <div class="shop__foot">
+            <div class="toggle" role="radiogroup" aria-label="Formato do Lumiar">
+              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
+              <i aria-hidden="true"></i>
+            </div>
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-lumiar" data-product="Lumiar · 250 g"><svg><use href="#i-wa"/></svg> Quero o Lumiar</button>
+          </div>
         </div>
       </div>
-    </article>
 
-    <!-- Linhas: Fiori, Virtuoso, Aurora e Astro -->
-    <div class="product-row product-row--lines">
-      <!-- Fiori -->
-      <article class="product product--line product--fiori reveal" data-tilt style="--d:.05s">
-        <div class="product__media">
-          <div class="product__tiles" aria-hidden="true"></div>
-          <div class="product__glow" aria-hidden="true"></div>
-          <img src="assets/img/pacote-fiori.webp" alt="Pacote Solare Fiori 250 g, rótulo terracota" width="235" height="394" loading="lazy">
-          <span class="product__tag">250 g · 1 kg</span>
+      <div class="shop__panel" role="tabpanel" id="p-fiori" aria-labelledby="t-fiori" style="--acc:#AB3F61" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/cafes/fiori-frente.webp" srcset="assets/img/cafes/fiori-frente-760.webp 760w, assets/img/cafes/fiori-frente.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacote Solare Fiori 250 g, de frente" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/fiori-duo.webp" srcset="assets/img/cafes/fiori-duo-760.webp 760w, assets/img/cafes/fiori-duo.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacotes Solare Fiori: frente e verso" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/verso.webp" srcset="assets/img/cafes/verso-760.webp 760w, assets/img/cafes/verso.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Verso do pacote Solare Fiori, com o texto da marca e o modo de preparo" width="1400" height="1120" loading="lazy">
+          </div>
+          <span class="shop__tag">250 g</span>
+          <div class="shop__thumbs" role="group" aria-label="Fotos do Fiori">
+            <button type="button" aria-pressed="true" aria-label="Frente"><img src="assets/img/cafes/fiori-frente-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Frente e verso"><img src="assets/img/cafes/fiori-duo-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Verso"><img src="assets/img/cafes/verso-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+          </div>
         </div>
-        <div class="product__body">
-          <p class="product__kicker">Floral e herbal · Torra clara</p>
-          <h3 class="product__name product__name--line"><svg><use href="#i-star"/></svg>Fiori</h3>
-          <p class="product__tagline">Lavanda</p>
-          <p class="product__desc">Cafés com notas florais de lavanda e sálvia, acidez cítrica equilibrada, corpo leve e sensorial de toranja, mel silvestre e especiarias. Torra clara feita com um incrível Geisha da Fazenda Guariroba, região do Campo das Vertentes (MG).</p>
-          <ul class="notes"><li>Lavanda</li><li>Sálvia</li><li>Toranja</li><li>Mel silvestre</li><li>Especiarias</li></ul>
-          <dl class="specs specs--compact">
-            <div><dt>Variedade</dt><dd>Geisha</dd></div>
-            <div><dt>Fazenda</dt><dd>Guariroba</dd></div>
-            <div><dt>Região</dt><dd>Campo das Vertentes, MG</dd></div>
-            <div><dt>Torra</dt><dd><span class="roast" data-level="2"></span> Clara</dd></div>
+        <div class="shop__body">
+          <p class="shop__kicker">Catuaí Amarelo · Torra média</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Fiori</h3>
+          <p class="shop__desc">Para cafés leves, com acidez marcante, notas florais, frutas cítricas e delicadeza na xícara.</p>
+          <p class="shop__line">Despertar suave, aromas florais, corpo leve.</p>
+          <ul class="notes"><li>Caramelo</li><li>Nozes</li><li>Chocolate</li></ul>
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
+            <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
+            <div><dt>Produtor</dt><dd>Zancanaro</dd></div>
+            <div><dt>Processo</dt><dd>Cereja descascada</dd></div>
+            <div><dt>Altitude</dt><dd>1.000 m</dd></div>
+            <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
           </dl>
-          <button type="button" class="btn btn--dark magnetic" data-contact data-origem="card-fiori" data-product="Fiori · Lavanda"><svg><use href="#i-wa"/></svg> Quero o Fiori</button>
+          <div class="shop__foot">
+            <div class="toggle" role="radiogroup" aria-label="Formato do Fiori">
+              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
+              <i aria-hidden="true"></i>
+            </div>
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-fiori" data-product="Fiori · 250 g"><svg><use href="#i-wa"/></svg> Quero o Fiori</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <!-- Virtuoso -->
-      <article class="product product--line product--virtuoso reveal" data-tilt style="--d:.15s">
-        <div class="product__media">
-          <div class="product__tiles" aria-hidden="true"></div>
-          <div class="product__glow" aria-hidden="true"></div>
-          <img src="assets/img/pacote-virtuoso.webp" alt="Pacote Solare Virtuoso 250 g, rótulo vinho" width="235" height="394" loading="lazy">
-          <span class="product__tag">250 g · 1 kg</span>
+      <div class="shop__panel" role="tabpanel" id="p-virtuoso" aria-labelledby="t-virtuoso" style="--acc:#0A9895" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/cafes/virtuoso-frente.webp" srcset="assets/img/cafes/virtuoso-frente-760.webp 760w, assets/img/cafes/virtuoso-frente.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacote Solare Virtuoso 250 g, de frente" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/virtuoso-duo.webp" srcset="assets/img/cafes/virtuoso-duo-760.webp 760w, assets/img/cafes/virtuoso-duo.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacotes Solare Virtuoso: frente e verso" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/verso.webp" srcset="assets/img/cafes/verso-760.webp 760w, assets/img/cafes/verso.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Verso do pacote Solare Virtuoso, com o texto da marca e o modo de preparo" width="1400" height="1120" loading="lazy">
+          </div>
+          <span class="shop__tag">250 g</span>
+          <div class="shop__thumbs" role="group" aria-label="Fotos do Virtuoso">
+            <button type="button" aria-pressed="true" aria-label="Frente"><img src="assets/img/cafes/virtuoso-frente-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Frente e verso"><img src="assets/img/cafes/virtuoso-duo-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Verso"><img src="assets/img/cafes/verso-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+          </div>
         </div>
-        <div class="product__body">
-          <p class="product__kicker">Frutado · 2 opções</p>
-          <h3 class="product__name product__name--line"><svg><use href="#i-star"/></svg>Virtuoso</h3>
-          <p class="product__tagline">Licor de goiaba ou cereja e maracujá</p>
-          <p class="product__desc">Cafés surpreendentes, com experiência sensorial marcante. Café fermentado de perfil exótico, com doçura elevada e complexidade aromática que remete ao frutado evidente desta linha, com corpo cremoso e acidez delicada.</p>
-          <ul class="notes"><li>Licor de goiaba</li><li>Cereja e maracujá</li><li>Corpo cremoso</li><li>Acidez delicada</li></ul>
-          <dl class="specs specs--compact">
-            <div><dt>Processo</dt><dd>Fermentado</dd></div>
+        <div class="shop__body">
+          <p class="shop__kicker">Catuaí Amarelo · Torra média</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Virtuoso</h3>
+          <p class="shop__desc">Para cafés com torra média clara, acidez mais pronunciada, complexidade e elegância.</p>
+          <p class="shop__line">Performance sensorial completa, com equilíbrio e profundidade.</p>
+          <ul class="notes"><li>Caramelo</li><li>Nozes</li><li>Chocolate</li></ul>
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
+            <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
+            <div><dt>Produtor</dt><dd>Zancanaro</dd></div>
+            <div><dt>Processo</dt><dd>Cereja descascada</dd></div>
+            <div><dt>Altitude</dt><dd>1.000 m</dd></div>
+            <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
           </dl>
-          <button type="button" class="btn btn--cream magnetic" data-contact data-origem="card-virtuoso" data-product="Virtuoso (licor de goiaba ou cereja e maracujá)"><svg><use href="#i-wa"/></svg> Quero o Virtuoso</button>
+          <div class="shop__foot">
+            <div class="toggle" role="radiogroup" aria-label="Formato do Virtuoso">
+              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
+              <i aria-hidden="true"></i>
+            </div>
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-virtuoso" data-product="Virtuoso · 250 g"><svg><use href="#i-wa"/></svg> Quero o Virtuoso</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <!-- Aurora -->
-      <article class="product product--line product--aurora reveal" data-tilt style="--d:.05s">
-        <div class="product__media">
-          <div class="product__tiles" aria-hidden="true"></div>
-          <div class="product__glow" aria-hidden="true"></div>
-          <img src="assets/img/pacote-aurora.webp" alt="Pacote Solare Aurora 250 g, rótulo caramelo" width="235" height="394" loading="lazy">
-          <span class="product__tag">250 g · 1 kg</span>
+      <div class="shop__panel" role="tabpanel" id="p-aurora" aria-labelledby="t-aurora" style="--acc:#BD854C" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/cafes/aurora-frente.webp" srcset="assets/img/cafes/aurora-frente-760.webp 760w, assets/img/cafes/aurora-frente.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacote Solare Aurora 250 g, de frente" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/aurora-duo.webp" srcset="assets/img/cafes/aurora-duo-760.webp 760w, assets/img/cafes/aurora-duo.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacotes Solare Aurora: frente e verso" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/verso.webp" srcset="assets/img/cafes/verso-760.webp 760w, assets/img/cafes/verso.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Verso do pacote Solare Aurora, com o texto da marca e o modo de preparo" width="1400" height="1120" loading="lazy">
+          </div>
+          <span class="shop__tag">250 g</span>
+          <div class="shop__thumbs" role="group" aria-label="Fotos do Aurora">
+            <button type="button" aria-pressed="true" aria-label="Frente"><img src="assets/img/cafes/aurora-frente-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Frente e verso"><img src="assets/img/cafes/aurora-duo-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Verso"><img src="assets/img/cafes/verso-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+          </div>
         </div>
-        <div class="product__body">
-          <p class="product__kicker">Caramelo · Para todos os dias</p>
-          <h3 class="product__name product__name--line"><svg><use href="#i-star"/></svg>Aurora</h3>
-          <p class="product__tagline">Caramelo e cana de açúcar</p>
-          <p class="product__desc">O foco da linha Aurora é levar cafés mais doces, com acidez equilibrada, para a sua xícara: corpo médio a alto e notas que variam entre nozes, castanhas, amêndoas e caramelo. Cafezão para todos os dias!</p>
-          <ul class="notes"><li>Caramelo</li><li>Cana de açúcar</li><li>Acidez equilibrada</li><li>Corpo médio a alto</li></ul>
-          <button type="button" class="btn btn--cream magnetic" data-contact data-origem="card-aurora" data-product="Aurora · Caramelo e cana de açúcar"><svg><use href="#i-wa"/></svg> Quero o Aurora</button>
-        </div>
-      </article>
-
-      <!-- Astro -->
-      <article class="product product--line product--astro reveal" data-tilt style="--d:.15s">
-        <div class="product__media">
-          <div class="product__tiles" aria-hidden="true"></div>
-          <div class="product__glow" aria-hidden="true"></div>
-          <img src="assets/img/pacote-astro.webp" alt="Pacote Solare Astro 250 g, rótulo amarelo" width="235" height="394" loading="lazy">
-          <span class="product__tag">250 g · 1 kg</span>
-        </div>
-        <div class="product__body">
-          <p class="product__kicker">Cafés raros · Origens diversas</p>
-          <h3 class="product__name product__name--line"><svg><use href="#i-star"/></svg>Astro</h3>
-          <p class="product__tagline">Caramelo e mel</p>
-          <p class="product__desc">Linha para cafés raros de origens diversas, com uma incrível elegância na xícara. Este café do Alto do Caparaó (MG), produzido por Alexandre Emerich, tem perfil sensorial intensamente doce, acidez cítrica equilibrada, corpo alto e finalização prazerosa.</p>
-          <ul class="notes"><li>Caramelo</li><li>Mel</li><li>Acidez cítrica</li><li>Corpo alto</li></ul>
-          <dl class="specs specs--compact">
-            <div><dt>Produtor</dt><dd>Alexandre Emerich</dd></div>
-            <div><dt>Região</dt><dd>Alto do Caparaó, MG</dd></div>
+        <div class="shop__body">
+          <p class="shop__kicker">Catuaí Amarelo · Torra média</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Aurora</h3>
+          <p class="shop__desc">Para cafés com doçura evidente, extremamente agradável, entregando uma bebida equilibrada e de finalização longa e prazerosa.</p>
+          <ul class="notes"><li>Caramelo</li><li>Nozes</li><li>Chocolate</li></ul>
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
+            <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
+            <div><dt>Produtor</dt><dd>Zancanaro</dd></div>
+            <div><dt>Processo</dt><dd>Cereja descascada</dd></div>
+            <div><dt>Altitude</dt><dd>1.000 m</dd></div>
+            <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
           </dl>
-          <button type="button" class="btn btn--dark magnetic" data-contact data-origem="card-astro" data-product="Astro · Caramelo e mel"><svg><use href="#i-wa"/></svg> Quero o Astro</button>
+          <div class="shop__foot">
+            <div class="toggle" role="radiogroup" aria-label="Formato do Aurora">
+              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
+              <i aria-hidden="true"></i>
+            </div>
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-aurora" data-product="Aurora · 250 g"><svg><use href="#i-wa"/></svg> Quero o Aurora</button>
+          </div>
         </div>
-      </article>
-    </div>
+      </div>
 
-    <div class="product-row">
-      <!-- Drip -->
-      <article class="product product--drip reveal" data-tilt style="--d:.05s">
-        <div class="product__media product__media--photo">
-          <img src="assets/img/drip-coffee.webp" alt="Caixa de Drip Coffee Solare Catuaí Amarelo com grãos de café" width="500" height="560" loading="lazy">
-          <span class="product__tag">10 sachês · 120 g</span>
+      <div class="shop__panel" role="tabpanel" id="p-astro" aria-labelledby="t-astro" style="--acc:#C8951F" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/cafes/astro-frente.webp" srcset="assets/img/cafes/astro-frente-760.webp 760w, assets/img/cafes/astro-frente.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacote Solare Astro 250 g, de frente" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/astro-duo.webp" srcset="assets/img/cafes/astro-duo-760.webp 760w, assets/img/cafes/astro-duo.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Pacotes Solare Astro: frente e verso" width="1400" height="1120" loading="lazy">
+            <img src="assets/img/cafes/verso.webp" srcset="assets/img/cafes/verso-760.webp 760w, assets/img/cafes/verso.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Verso do pacote Solare Astro, com o texto da marca e o modo de preparo" width="1400" height="1120" loading="lazy">
+          </div>
+          <span class="shop__tag">250 g</span>
+          <div class="shop__thumbs" role="group" aria-label="Fotos do Astro">
+            <button type="button" aria-pressed="true" aria-label="Frente"><img src="assets/img/cafes/astro-frente-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Frente e verso"><img src="assets/img/cafes/astro-duo-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+            <button type="button" aria-pressed="false" aria-label="Verso"><img src="assets/img/cafes/verso-thumb.webp" alt="" width="240" height="192" loading="lazy"></button>
+          </div>
         </div>
-        <div class="product__body">
-          <p class="product__kicker">Drip coffee · Torra clara</p>
-          <h3 class="product__name product__name--slab">Catuaí Amarelo</h3>
-          <p class="product__desc">Café especial em dose individual. Beba seu café especial onde estiver: no trabalho, na viagem, no meio da trilha.</p>
+        <div class="shop__body">
+          <p class="shop__kicker">Catuaí Amarelo · Torra média</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Astro</h3>
+          <p class="shop__desc">Perfil sensorial doce, destacando notas de caramelo e melaço.</p>
+          <p class="shop__line">Torra especialmente desenhada para a extração de um espresso encorpado, doce e prazeroso.</p>
+          <ul class="notes"><li>Caramelo</li><li>Nozes</li><li>Chocolate</li></ul>
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
+            <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
+            <div><dt>Produtor</dt><dd>Zancanaro</dd></div>
+            <div><dt>Processo</dt><dd>Cereja descascada</dd></div>
+            <div><dt>Altitude</dt><dd>1.000 m</dd></div>
+            <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="3"></span> Média</dd></div>
+          </dl>
+          <div class="shop__foot">
+            <div class="toggle" role="radiogroup" aria-label="Formato do Astro">
+              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
+              <i aria-hidden="true"></i>
+            </div>
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-astro" data-product="Astro · 250 g"><svg><use href="#i-wa"/></svg> Quero o Astro</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop__panel shop__panel--photo" role="tabpanel" id="p-drip" aria-labelledby="t-drip" style="--acc:#E19350" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/drip-coffee.webp" alt="Caixa de Drip Coffee Solare Catuaí Amarelo com grãos de café" width="500" height="560" loading="lazy">
+          </div>
+          <span class="shop__tag">10 sachês · 120 g</span>
+        </div>
+        <div class="shop__body">
+          <p class="shop__kicker">Drip coffee · Torra clara</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Drip Coffee</h3>
+          <p class="shop__desc">Café especial em dose individual. Beba seu café especial onde estiver: no trabalho, na viagem, no meio da trilha.</p>
+          <p class="shop__line">Catuaí Amarelo, em sachês de 12 g na dose certa.</p>
           <ul class="notes"><li>Caramelo</li><li>Melaço</li></ul>
-          <dl class="specs specs--compact">
+          <dl class="specs specs--shop">
+            <div><dt>Variedade</dt><dd>Catuaí Amarelo</dd></div>
             <div><dt>Região</dt><dd>Cristalina, GO</dd></div>
             <div><dt>Processo</dt><dd>Natural</dd></div>
             <div><dt>Torra</dt><dd><span class="roast roast--light" data-level="2"></span> Clara</dd></div>
           </dl>
-          <button type="button" class="btn btn--caramel magnetic" data-contact data-origem="card-drip" data-product="Drip Coffee Catuaí Amarelo"><svg><use href="#i-wa"/></svg> Quero o Drip Coffee</button>
+          <div class="shop__foot">
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-drip" data-product="Drip Coffee Catuaí Amarelo"><svg><use href="#i-wa"/></svg> Quero o Drip Coffee</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <!-- Kit -->
-      <article class="product product--kit reveal" data-tilt style="--d:.15s">
-        <div class="product__media product__media--photo">
-          <img src="assets/img/kit-solare.webp" alt="Pacote Lumiar, caixa de drip coffee e caneca Solare sobre grãos de café" width="1350" height="1127" loading="lazy">
-          <span class="product__tag">Para presentear</span>
+      <div class="shop__panel shop__panel--photo" role="tabpanel" id="p-kit" aria-labelledby="t-kit" style="--acc:#F0B783" hidden>
+        <div class="shop__media">
+          <div class="shop__photos">
+            <img class="is-on" src="assets/img/kit-solare.webp" alt="Pacote, caixa de drip coffee e caneca Solare sobre grãos de café" width="1350" height="1127" loading="lazy">
+          </div>
+          <span class="shop__tag">Para presentear</span>
         </div>
-        <div class="product__body">
-          <p class="product__kicker">Kit presente</p>
-          <h3 class="product__name">Kit Solare</h3>
-          <p class="product__desc">Lumiar 250 g, Drip Coffee Catuaí Amarelo e a caneca Solare. Para quem ama café, ou para você se dar esse presente.</p>
+        <div class="shop__body">
+          <p class="shop__kicker">Kit presente</p>
+          <h3 class="shop__name"><svg aria-hidden="true"><use href="#i-star"/></svg>Kit Solare</h3>
+          <p class="shop__desc">Lumiar 250 g, Drip Coffee Catuaí Amarelo e a caneca Solare. Para quem ama café, ou para você se dar esse presente.</p>
           <ul class="notes"><li>Pacote 250 g</li><li>10 sachês</li><li>Caneca</li></ul>
-          <button type="button" class="btn btn--dark magnetic" data-contact data-origem="card-kit" data-product="Kit presente com caneca"><svg><use href="#i-wa"/></svg> Quero montar um kit</button>
+          <div class="shop__foot">
+            <button type="button" class="btn btn--cream magnetic" data-contact data-origem="cafes-kit" data-product="Kit presente com caneca"><svg><use href="#i-wa"/></svg> Quero montar um kit</button>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
@@ -341,7 +436,7 @@
         <figcaption>
           <span class="coord">21°27′S · 45°13′W</span>
           <b>Carmo da Cachoeira · Sul de Minas</b>
-          <span>960 m de altitude · origem do Lumiar</span>
+          <span>960 m de altitude</span>
         </figcaption>
       </figure>
       <figure class="origin-card origin-card--b reveal" style="--d:.1s">
@@ -349,7 +444,7 @@
         <figcaption>
           <span class="coord">16°46′S · 47°36′W</span>
           <b>Cristalina · Cerrado goiano</b>
-          <span>Origem do Drip Coffee Catuaí Amarelo</span>
+          <span>1.000 m de altitude · origem das linhas Solare e do Drip Coffee</span>
         </figcaption>
       </figure>
       <aside class="origin-fact reveal" style="--d:.2s">
@@ -570,9 +665,6 @@
 <section class="final" id="contato">
   <div class="final__tiles" aria-hidden="true"></div>
   <div class="final__card wrap">
-    <div class="final__sun" aria-hidden="true">
-      <svg viewBox="-300 -300 600 600" data-rays="36" data-r1="190" data-r2="280"></svg>
-    </div>
     <img class="final__emblem" src="assets/img/solare-emblema.webp" alt="" aria-hidden="true" width="567" height="567">
     <h2 class="reveal">Sua próxima xícara<br><em>começa aqui.</em></h2>
     <p class="reveal">Responda algumas perguntas rápidas e continue a conversa no WhatsApp, já com o seu pedido anotado.</p>
@@ -611,6 +703,6 @@
   <span class="fab__tip">Peça o seu café</span>
 </button>
 
-<script src="assets/js/main.js?v=20261116-2" defer></script>
+<script src="assets/js/main.js?v=20261119-3" defer></script>
 </body>
 </html>

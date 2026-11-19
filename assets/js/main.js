@@ -148,11 +148,12 @@ $$(".ticker__track").forEach((t) => { t.innerHTML += t.innerHTML; });
       if (!e.isIntersecting) return;
       countIO.unobserve(e.target);
       const el = e.target, to = +el.dataset.count;
-      if (reduced) { el.textContent = to; return; }
+      const fmt = (n) => n.toLocaleString("pt-BR"); // 1000 → 1.000
+      if (reduced) { el.textContent = fmt(to); return; }
       const t0 = performance.now(), dur = 1700;
       const tick = (now) => {
         const p = clamp((now - t0) / dur);
-        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3)));
+        el.textContent = fmt(Math.round(to * (1 - Math.pow(1 - p, 3))));
         if (p < 1) requestAnimationFrame(tick);
       };
       requestAnimationFrame(tick);
@@ -283,11 +284,83 @@ const manifesto = (function () {
   });
 })();
 
-/* ---------- Lumiar: grãos ou moído ---------- */
+/* ---------- Cafés: vitrine em abas (um café à vista, os outros pelo nome) ---------- */
+(function shop() {
+  const root = $("[data-shop]");
+  if (!root) return;
+  const bar = $(".shop__tabs", root), ink = $(".shop__ink", root);
+  const tabs = $$('[role="tab"]', root);
+  const panelOf = (t) => document.getElementById(t.getAttribute("aria-controls"));
+  const warm = (scope, sel = "img[loading=lazy]") => $$(sel, scope).forEach((im) => { im.loading = "eager"; });
+
+  const placeInk = () => {
+    const on = tabs.find((t) => t.getAttribute("aria-selected") === "true");
+    ink.style.width = on.offsetWidth + "px";
+    ink.style.transform = `translateX(${on.offsetLeft}px)`;
+  };
+
+  const select = (tab, focus) => {
+    if (focus) tab.focus();
+    if (tab.getAttribute("aria-selected") === "true") return;
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+      panelOf(t).hidden = !on;
+    });
+    const p = panelOf(tab);
+    warm(p);
+    if (!reduced) { p.classList.remove("is-entering"); void p.offsetWidth; p.classList.add("is-entering"); }
+    // no celular a barra rola: mantém a aba escolhida à vista
+    const l = tab.offsetLeft, r = l + tab.offsetWidth;
+    if (l < bar.scrollLeft || r > bar.scrollLeft + bar.clientWidth) bar.scrollTo({ left: l - 24, behavior: reduced ? "auto" : "smooth" });
+    placeInk();
+    window.dispatchEvent(new Event("resize")); // reposiciona o seletor grãos/moído do painel que apareceu
+  };
+
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", (e) => {
+      const k = { ArrowRight: 1, ArrowLeft: -1, Home: "first", End: "last" }[e.key];
+      if (k === undefined) return;
+      e.preventDefault();
+      select(tabs[k === "first" ? 0 : k === "last" ? tabs.length - 1 : (i + k + tabs.length) % tabs.length], true);
+    });
+    const pre = () => warm(panelOf(t));
+    t.addEventListener("pointerenter", pre, { once: true });
+    t.addEventListener("focus", pre, { once: true });
+  });
+
+  // miniaturas: frente, frente e verso, verso
+  $$(".shop__thumbs", root).forEach((g) => {
+    const btns = $$("button", g), imgs = $$(".shop__photos img", g.closest(".shop__media"));
+    btns.forEach((b, i) => b.addEventListener("click", () => {
+      btns.forEach((x) => x.setAttribute("aria-pressed", x === b));
+      imgs.forEach((im, k) => { if (k === i) im.loading = "eager"; im.classList.toggle("is-on", k === i); });
+    }));
+  });
+
+  // quando a vitrine chega perto, baixa em segundo plano a foto principal dos outros cafés
+  const io = new IntersectionObserver((entries) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    io.disconnect();
+    const go = () => warm(root, ".shop__photos img.is-on[loading=lazy]");
+    if ("requestIdleCallback" in window) requestIdleCallback(go, { timeout: 2500 });
+    else setTimeout(go, 1200);
+  }, { rootMargin: "300px 0px" });
+  io.observe(root);
+
+  window.addEventListener("resize", placeInk);
+  document.fonts && document.fonts.ready.then(placeInk);
+  placeInk();
+})();
+
+/* ---------- Grãos ou moído ---------- */
 (function formatToggle() {
   $$(".toggle").forEach((t) => {
     const btns = $$("button", t), ink = $("i", t);
     const place = () => {
+      if (!t.offsetParent) return; // painel escondido: posiciona quando aparecer
       const on = btns.find((b) => b.getAttribute("aria-checked") === "true");
       ink.style.width = on.offsetWidth + "px";
       ink.style.transform = `translateX(${on.offsetLeft - 4}px)`;
@@ -467,11 +540,11 @@ const Qualify = (function () {
         { v: "Evento, aulão ou degustação", sub: "Para o seu público" },
         { v: "Quero conhecer as opções", sub: "A gente apresenta os cafés" },
       ] : [
-        { v: "Lumiar · 250 g", sub: "Torra média · notas de chocolate" },
-        { v: "Fiori · Lavanda", sub: "Floral e herbal · torra clara" },
-        { v: "Virtuoso (licor de goiaba ou cereja e maracujá)", sub: "Frutado · fermentado" },
-        { v: "Aurora · Caramelo e cana de açúcar", sub: "Doce · acidez equilibrada" },
-        { v: "Astro · Caramelo e mel", sub: "Cafés raros · origens diversas" },
+        { v: "Lumiar · 250 g", sub: "Vivo · acidez cítrica e corpo leve" },
+        { v: "Fiori · 250 g", sub: "Leve · notas florais e frutas cítricas" },
+        { v: "Virtuoso · 250 g", sub: "Complexo · acidez pronunciada e elegância" },
+        { v: "Aurora · 250 g", sub: "Doce · bebida equilibrada, finalização longa" },
+        { v: "Astro · 250 g", sub: "Doce · caramelo e melaço, ideal para espresso" },
         { v: "Drip Coffee Catuaí Amarelo", sub: "10 sachês · caramelo e melaço" },
         { v: "Kit presente com caneca", sub: "Lumiar, drip coffee e caneca" },
         { v: "Quero ajuda para escolher", sub: "A gente indica pelo seu gosto" },
@@ -853,7 +926,7 @@ document.addEventListener("click", (e) => {
   try { preset = t.dataset.preset ? JSON.parse(t.dataset.preset) : {}; } catch (err) {}
   if (t.dataset.product) {
     preset.interesse = [t.dataset.product];
-    const card = t.closest(".product");
+    const card = t.closest(".shop__panel");
     const on = card && $('.toggle [aria-checked="true"]', card);
     if (on) preset.formato = on.dataset.format;
   }

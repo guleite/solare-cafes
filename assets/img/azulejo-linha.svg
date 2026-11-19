@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- textura de cobogó só em linha, a partir da faixa de azulejos da embalagem nova
+       (grão com folhas, arcos, xícara vista de cima e estrela).
+       Usada como máscara no CSS: a cor vem do background-color de quem usa,
+       por isso sempre monocromática em relação ao fundo. -->
+  <g fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- moldura de cada azulejo -->
+    <rect x="3" y="3" width="54" height="54" rx="3"/>
+    <rect x="63" y="3" width="54" height="54" rx="3"/>
+    <rect x="3" y="63" width="54" height="54" rx="3"/>
+    <rect x="63" y="63" width="54" height="54" rx="3"/>
+
+    <!-- 1. grão de café com duas folhas -->
+    <ellipse cx="30" cy="21" rx="7.5" ry="10.5"/>
+    <path d="M31 11.5c-3.6 4.4-.4 8-1.6 10.6-1 2.6-2.7 5.6-.6 8.6"/>
+    <path d="M30 51c-1-9.5-8-15.5-19-16 1.2 9.6 8.6 15.6 19 16Z"/>
+    <path d="M30 51c1-9.5 8-15.5 19-16-1.2 9.6-8.6 15.6-19 16Z"/>
+
+    <!-- 2. arcos concêntricos com folhas na base -->
+    <path d="M78 8a12 12 0 0 0 24 0"/>
+    <path d="M71 8a19 19 0 0 0 38 0"/>
+    <path d="M64.5 8a25.5 25.5 0 0 0 51 0"/>
+    <path d="M90 52c-6.5 0-12.5-4-14.5-9.5 6.5 0 12.5 4 14.5 9.5Z"/>
+    <path d="M90 52c6.5 0 12.5-4 14.5-9.5-6.5 0-12.5 4-14.5 9.5Z"/>
+
+    <!-- 3. xícara vista de cima -->
+    <circle cx="28" cy="90" r="17"/>
+    <circle cx="28" cy="90" r="10.5"/>
+    <path d="M45 87h4.5a3 3 0 0 1 0 6H45"/>
+
+    <!-- 4. estrela de quatro pontas com quartos de círculo nos cantos -->
+    <path d="M90 74c1.3 9.3 6.7 14.7 16 16-9.3 1.3-14.7 6.7-16 16-1.3-9.3-6.7-14.7-16-16 9.3-1.3 14.7-6.7 16-16Z"/>
+    <path d="M66 75a9 9 0 0 0 9-9"/>
+    <path d="M105 66a9 9 0 0 0 9 9"/>
+    <path d="M66 105a9 9 0 0 1 9 9"/>
+    <path d="M114 105a9 9 0 0 0-9 9"/>
+  </g>
+</svg>
