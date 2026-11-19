@@ -256,7 +256,7 @@ body.skip-intro .intro { display: none; }
 .hero__in {
   position: relative;
   display: grid;
-  grid-template-columns: 1.05fr .95fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 40px;
   min-height: calc(100svh - 210px);
@@ -268,7 +268,7 @@ body.skip-intro .intro { display: none; }
   border: 1px solid var(--line);
   margin-bottom: 26px;
 }
-.hero__title { font-size: clamp(3.1rem, 7.6vw, 6.8rem); line-height: .9; letter-spacing: -.02em; color: var(--cafe); }
+.hero__title { font-size: clamp(2.4rem, 5.4vw, 4.9rem); line-height: .9; letter-spacing: -.02em; color: var(--cafe); }
 .hero__title .line { display: block; overflow: hidden; padding: .02em 0 .1em; margin-bottom: -.08em; }
 .hero__title .line > span { display: inline-block; }
 .hero__title em { font-size: 1.1em; padding-right: .06em; }
@@ -285,8 +285,11 @@ body:not(.is-ready) [data-in] { opacity: 0; transform: translateY(26px); }
 body:not(.is-ready) .line > [data-in] { opacity: 1; transform: translateY(108%); }
 body.skip-intro { --base: .1s; }
 
+/* O palco é um container: selos e grãos usam cqi (% da largura do palco),
+   então tudo cresce junto e mantém a proporção. Referência: palco de 570 px. */
 .hero__stage {
   position: relative;
+  container-type: inline-size;
   width: 100%;
   max-width: 600px;
   aspect-ratio: 1 / 1.04;
@@ -300,7 +303,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   inset: 13%;
   border-radius: 50%;
   background: radial-gradient(circle at 38% 32%, #F6C08C 0%, #E8A262 38%, #DC8A45 72%, #C9773A 100%);
-  box-shadow: 0 0 0 16px rgba(225, 147, 80, .12), 0 0 0 34px rgba(225, 147, 80, .06), 0 0 140px 30px rgba(225, 147, 80, .35);
+  box-shadow: 0 0 0 2.8cqi rgba(225, 147, 80, .12), 0 0 0 6cqi rgba(225, 147, 80, .06), 0 0 24.5cqi 5.3cqi rgba(225, 147, 80, .35);
 }
 .stage__rays { position: absolute; inset: -1%; width: 102%; stroke: var(--caramelo); stroke-width: 5; stroke-linecap: round; animation: spin 90s linear infinite; }
 /* O ramo vem cortado na borda direita. Espelhado (scale -1 em torno da borda
@@ -327,11 +330,13 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   border: 1px solid rgba(67, 50, 42, .1);
   box-shadow: 0 16px 34px -16px rgba(43, 32, 26, .45);
   font-weight: 600;
-  font-size: .86rem;
+  font-size: clamp(.72rem, 2.42cqi, 1.05rem);
   white-space: nowrap;
 }
-.chip > svg { width: 12px; height: 12px; fill: var(--caramelo); }
-.chip .pin { width: 15px; height: 15px; color: var(--caramelo); }
+.chip > svg { width: .87em; height: .87em; fill: var(--caramelo); }
+.chip .pin { width: 1.09em; height: 1.09em; color: var(--caramelo); }
+.chip .roast { gap: .22em; }
+.chip .roast svg { width: .65em; height: .95em; }
 .chip--a { left: -4%; top: 25%; animation: bob 5s ease-in-out infinite; }
 .chip--b { right: -6%; top: 50%; animation: bob 6s ease-in-out -2s infinite; }
 .chip--c { left: 2%; bottom: 13%; animation: bob 5.5s ease-in-out -1s infinite; }
@@ -348,8 +353,8 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   position: absolute;
   left: var(--x);
   top: var(--y);
-  width: var(--s);
-  height: calc(var(--s) * 1.4);
+  width: calc(var(--s) * 100cqi / 570);
+  height: calc(var(--s) * 140cqi / 570);
   animation: bean-float var(--t) ease-in-out infinite alternate;
 }
 .bean--blur { filter: blur(3px); opacity: .85; }
@@ -854,6 +859,13 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   .hero { padding-top: 110px; }
   .hero__in { grid-template-columns: 1fr; gap: 20px; min-height: 0; }
   .hero__stage { max-width: 500px; width: 92%; }
+  /* no tablet e no celular, selos e grãos ficam no tamanho fixo de antes */
+  .chip { font-size: .86rem; }
+  .chip > svg { width: 12px; height: 12px; }
+  .chip .pin { width: 15px; height: 15px; }
+  .chip .roast { gap: 3px; }
+  .chip .roast svg { width: 9px; height: 13px; }
+  .beans .bean { width: calc(var(--s) * 1px); height: calc(var(--s) * 1.4px); }
   .hero__branch { bottom: auto; top: 46%; width: 90px; opacity: .55; }
   .hero__scroll { display: none; }
 
@@ -891,7 +903,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   .hdr__cta span { display: none; }
   .hdr__cta { padding: .7em; border-radius: 50%; }
   .hdr__in { gap: 10px; }
-  .hero__title { font-size: clamp(2.9rem, 14.5vw, 4.2rem); }
+  .hero__title { font-size: clamp(2.2rem, 10.8vw, 3.1rem); }
   .hero__actions .btn { width: 100%; }
   .hero__stage .bean:first-child { --x: 3% !important; --y: 40% !important; }
   .hero__stage .bean--blur { display: none; }
