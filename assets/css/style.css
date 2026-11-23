@@ -453,7 +453,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
   --acc-lt: color-mix(in srgb, var(--acc) 62%, #fff);
   display: grid;
   grid-template-columns: 1.12fr 1fr;
-  min-height: 600px;
+  min-height: 620px;
   border-radius: 30px;
   overflow: hidden;
   background: var(--cafe);
@@ -473,7 +473,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .shop__thumbs button:hover { opacity: 1; }
 .shop__thumbs button[aria-pressed="true"] { opacity: 1; border-color: var(--creme); transform: translateY(-3px); }
 
-.shop__body { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 14px; padding: clamp(28px, 4vw, 56px); border-left: 6px solid var(--acc); }
+.shop__body { position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(28px, 4vw, 56px); border-left: 6px solid var(--acc); }
 /* textura de cobogó só em linha, no tom do próprio fundo */
 .shop__body::before {
   content: "";
@@ -490,9 +490,12 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .shop__name { display: flex; align-items: flex-start; font: 400 clamp(2.8rem, 5.4vw, 4.6rem)/.92 var(--ff-serif); letter-spacing: .02em; text-transform: uppercase; }
 .shop__name svg { width: .22em; height: .22em; fill: var(--acc-lt); margin: -.05em .04em 0 0; animation: twinkle 3s ease-in-out infinite; }
 @keyframes twinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.7) rotate(45deg); } }
+.shop__panel--photo .shop__name { font-size: clamp(2.4rem, 4vw, 3.2rem); } /* drip e kit: nome numa linha só */
 .shop__desc { max-width: 46ch; font-size: 1.05rem; opacity: .88; }
 .shop__line { max-width: 36ch; font: 400 1.22rem/1.3 var(--ff-serif); color: var(--acc-lt); }
-.shop__foot { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+.shop__obs { display: flex; gap: .55em; align-items: baseline; max-width: 48ch; margin-top: 4px; font-size: .86rem; line-height: 1.45; opacity: .72; }
+.shop__obs svg { flex: none; width: .8em; height: .8em; fill: var(--acc-lt); transform: translateY(.05em); }
+.shop__foot { margin-top: 14px; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
 .shop__panel--photo .shop__foot { justify-content: flex-start; }
 .shop .btn--cream { color: var(--cafe-900); }
 .shop .btn--cream svg { fill: var(--acc); }

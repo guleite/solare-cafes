@@ -381,7 +381,7 @@ const manifesto = (function () {
   if (!root) return;
   const M = {
     coado: {
-      proporcao: "1 : 15", moagem: "Média-fina", agua: "92–96 °C", tempo: "2:30 a 3:00",
+      proporcao: "1 : 15", moagem: "Média-fina", agua: "92–96 °C", tempo: "2:30 a 3:30",
       sugestao: "Sugestão: Lumiar moído", unidade: "Xícaras de 150 ml", ml: 150, ratio: 15, max: 8,
       steps: [
         "Escalde o filtro com água quente e descarte essa água.",
@@ -391,8 +391,8 @@ const manifesto = (function () {
       ],
     },
     prensa: {
-      proporcao: "1 : 15", moagem: "Grossa", agua: "92–96 °C", tempo: "4 minutos",
-      sugestao: "Sugestão: Lumiar moído grosso", unidade: "Xícaras de 150 ml", ml: 150, ratio: 15, max: 8,
+      proporcao: "1 : 16", moagem: "Grossa", agua: "92–96 °C", tempo: "4 minutos",
+      sugestao: "Sugestão: Lumiar moído grosso", unidade: "Xícaras de 150 ml", ml: 150, ratio: 16, max: 8,
       steps: [
         "Coloque o café na prensa e adicione toda a água de uma vez.",
         "Mexa suavemente, tampe e aguarde 4 minutos sem pressionar.",
@@ -406,17 +406,17 @@ const manifesto = (function () {
       steps: [
         "Encha a base com água já quente, até a altura da válvula.",
         "Preencha o funil com café, nivelando sem compactar.",
-        "Leve ao fogo baixo com a tampa aberta.",
-        "Retire quando o café clarear e começar a borbulhar.",
+        "Rosqueie bem a moka e leve ao fogo baixo com a tampa fechada.",
+        "Retire do fogo assim que o café começar a borbulhar.",
       ],
     },
     drip: {
-      proporcao: "1 sachê : 150 ml", moagem: "Já vem moído", agua: "90–94 °C", tempo: "Cerca de 2 min",
-      sugestao: "Drip Coffee Catuaí Amarelo", unidade: "Xícaras de 150 ml", ml: 150, sachet: 12, max: 10,
+      proporcao: "1 sachê : 120 a 180 ml", moagem: "Já vem moído", agua: "90–94 °C", tempo: "Cerca de 2 min",
+      sugestao: "Sugestão: Drip Coffee Solare", unidade: "Xícaras (1 sachê cada)", ml: 150, mlMin: 120, mlMax: 180, sachet: 12, max: 10,
       steps: [
         "Abra o sachê na linha picotada e encaixe as abas na borda da xícara.",
         "Molhe o pó com um pouco de água e espere 20 segundos.",
-        "Complete com o restante da água aos poucos.",
+        "Complete aos poucos até 120 a 180 ml, conforme a concentração que você prefere.",
         "Retire o sachê e aproveite.",
       ],
     },
@@ -449,7 +449,10 @@ const manifesto = (function () {
     const water = m.ml * cups;
     if (m.sachet) { animateNum(out.cafe, cups); unitCafe.textContent = cups > 1 ? "sachês de drip" : "sachê de drip"; }
     else { animateNum(out.cafe, Math.round(water / m.ratio)); unitCafe.textContent = "g de café"; }
-    animateNum(out.agua, water);
+    if (m.mlMin) { // drip: faixa de água conforme a concentração preferida
+      out.agua._anim = (out.agua._anim || 0) + 1;
+      out.agua.textContent = `${m.mlMin * cups}–${m.mlMax * cups}`;
+    } else animateNum(out.agua, water);
     cup.style.setProperty("--fill", (0.25 + 0.75 * (cups / m.max)).toFixed(3));
   };
 
@@ -530,7 +533,7 @@ const Qualify = (function () {
       title: (d) => isPessoal(d) ? "O que você gostaria de pedir?" : d.perfil === LOJA ? "O que o seu negócio procura?" : "O que a sua empresa procura?",
       hint: "Pode marcar mais de um.",
       options: (d) => d.perfil === EMPRESA ? [
-        { v: "Café para o escritório", sub: "Em grãos, moído ou drip coffee" },
+        { v: "Café para o escritório", sub: "Cafés e máquinas superautomáticas" },
         { v: "Kits e presentes corporativos", sub: "Para clientes, parceiros e equipe" },
         { v: "Evento, aulão ou degustação", sub: "Experiência Solare no seu evento" },
         { v: "Drip coffee para a equipe", sub: "Prático para a rotina do escritório" },
@@ -540,12 +543,12 @@ const Qualify = (function () {
         { v: "Evento, aulão ou degustação", sub: "Para o seu público" },
         { v: "Quero conhecer as opções", sub: "A gente apresenta os cafés" },
       ] : [
-        { v: "Lumiar · 250 g", sub: "Vivo · acidez cítrica e corpo leve" },
-        { v: "Fiori · 250 g", sub: "Leve · notas florais e frutas cítricas" },
-        { v: "Virtuoso · 250 g", sub: "Complexo · acidez pronunciada e elegância" },
-        { v: "Aurora · 250 g", sub: "Doce · bebida equilibrada, finalização longa" },
-        { v: "Astro · 250 g", sub: "Doce · caramelo e melaço, ideal para espresso" },
-        { v: "Drip Coffee Catuaí Amarelo", sub: "10 sachês · caramelo e melaço" },
+        { v: "Lumiar · 250 g", sub: "Perfil chocolate" },
+        { v: "Fiori · 250 g", sub: "Perfil floral" },
+        { v: "Virtuoso · 250 g", sub: "Perfil frutado" },
+        { v: "Aurora · 250 g", sub: "Perfil caramelo e melaço" },
+        { v: "Astro · 250 g", sub: "Cafés raros e de pontuação alta" },
+        { v: "Drip Coffee", sub: "10 sachês de 12 g, café de qualquer linha" },
         { v: "Kit presente com caneca", sub: "Lumiar, drip coffee e caneca" },
         { v: "Quero ajuda para escolher", sub: "A gente indica pelo seu gosto" },
       ],
