@@ -337,6 +337,28 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .chip .pin { width: 1.09em; height: 1.09em; color: var(--caramelo); }
 .chip .roast { gap: .22em; }
 .chip .roast svg { width: .65em; height: .95em; }
+/* título pequeno acima do pacote: deixa claro que é um café de uma das linhas */
+.stage__label {
+  position: absolute;
+  z-index: 2;
+  top: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  margin: 0;
+  padding: .65em 1.25em;
+  border-radius: 999px;
+  background: var(--cafe);
+  color: var(--creme);
+  font: 600 clamp(.7rem, 2.1cqi, .9rem)/1 var(--ff-sans);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 16px 34px -16px rgba(43, 32, 26, .6);
+}
+.stage__label svg { width: 1em; height: 1em; fill: var(--caramelo); }
 .chip--a { left: -4%; top: 25%; animation: bob 5s ease-in-out infinite; }
 .chip--b { right: -6%; top: 50%; animation: bob 6s ease-in-out -2s infinite; }
 .chip--c { left: 2%; bottom: 13%; animation: bob 5.5s ease-in-out -1s infinite; }
@@ -466,6 +488,7 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .shop__photos { position: absolute; inset: 0; }
 .shop__photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.04); transition: opacity .6s var(--ease-out), transform 1.4s var(--ease-out); }
 .shop__photos img.is-on { opacity: 1; transform: none; }
+#p-drip .shop__photos img { object-position: 60% 50%; } /* caixa do drip fica à direita do centro da foto */
 .shop__tag { position: absolute; top: 20px; left: 20px; z-index: 2; padding: .45em .95em; border-radius: 999px; background: var(--creme); color: var(--cafe); font-weight: 700; font-size: .8rem; letter-spacing: .02em; }
 .shop__thumbs { position: absolute; left: 18px; bottom: 16px; z-index: 2; display: flex; gap: 8px; }
 .shop__thumbs button { width: 66px; aspect-ratio: 5 / 4; border-radius: 10px; overflow: hidden; border: 2px solid rgba(243, 240, 228, .5); opacity: .75; box-shadow: 0 10px 20px -12px rgba(43, 32, 26, .8); transition: opacity .3s, border-color .3s, transform .4s var(--ease-out); }
@@ -537,6 +560,13 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .coord { font-weight: 600; font-size: .72rem; letter-spacing: .16em; color: var(--cobre); }
 .origin-card b { font-size: 1.12rem; }
 .origin-card figcaption > span:last-child { color: var(--ink-soft); font-size: .93rem; }
+/* lista de regiões de onde vêm os cafés (no lugar do antigo card de Carmo da Cachoeira) */
+.origin-regions { align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: clamp(24px, 3vw, 34px); border-radius: 24px; background: var(--leite); border: 1px solid var(--line); }
+.origin-regions > b { font: 400 clamp(1.7rem, 2.6vw, 2.2rem)/1.05 var(--ff-serif); color: var(--cafe); }
+.regions { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); column-gap: 22px; }
+.regions li { display: flex; align-items: baseline; justify-content: space-between; gap: .6em; padding: 9px 0; border-bottom: 1px solid var(--line); font-weight: 500; font-size: .95rem; }
+.regions small { flex: none; font-weight: 700; font-size: .7rem; letter-spacing: .14em; color: var(--cobre); }
+.origin-regions > p { color: var(--ink-soft); font-size: .93rem; }
 .origin-fact { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; padding: 28px; border-radius: 24px; background: var(--petroleo); color: var(--creme); overflow: hidden; }
 .origin-fact::before { content: ""; position: absolute; inset: 0; background-color: rgba(243, 240, 228, .14); -webkit-mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); -webkit-mask-composite: source-in; mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); mask-composite: intersect; }
 .origin-fact__bean { position: relative; width: 38px; height: 54px; color: #E6B23A; --bean-line: var(--petroleo); animation: bob 4s ease-in-out infinite; }

@@ -362,6 +362,9 @@ const manifesto = (function () {
     const place = () => {
       if (!t.offsetParent) return; // painel escondido: posiciona quando aparecer
       const on = btns.find((b) => b.getAttribute("aria-checked") === "true");
+      // começa sem nada marcado: o formulário pergunta grãos ou moído
+      ink.style.opacity = on ? 1 : 0;
+      if (!on) return;
       ink.style.width = on.offsetWidth + "px";
       ink.style.transform = `translateX(${on.offsetLeft - 4}px)`;
     };
@@ -512,6 +515,8 @@ const Qualify = (function () {
   const EMPRESA = "Minha empresa ou escritório";
   const LOJA = "Minha cafeteria, restaurante ou loja";
   const isPessoal = (d) => PESSOAL.includes(d.perfil);
+  // pedido com café em pacote (as linhas, o kit ou "ajuda para escolher"): aí importa grãos ou moído
+  const temPacote = (d) => (d.interesse || []).some((i) => /Lumiar|Fiori|Virtuoso|Aurora|Astro|Kit|ajuda/.test(i));
 
   const steps = [
     {
@@ -554,17 +559,28 @@ const Qualify = (function () {
       ],
     },
     {
+      // pergunta sempre, a menos que a pessoa já tenha escolhido no seletor da vitrine
+      id: "formato", type: "single", layout: "two", kicker: "Formato",
+      when: (d) => isPessoal(d) && temPacote(d),
+      title: (d) => d.perfil === "Presentear alguém" ? "O café vai em grãos ou moído?" : "Você prefere em grãos ou moído?",
+      hint: "Se tiver moedor em casa, em grãos o aroma dura mais.",
+      options: (d) => {
+        const o = [{ v: "Em grãos", sub: "Para quem tem moedor" }, { v: "Moído", sub: "Na moagem certa para o seu método" }];
+        if (d.perfil === "Presentear alguém") o.push({ v: "Não sei: podem sugerir", sub: "A gente ajuda a escolher" });
+        return o;
+      },
+    },
+    {
       id: "preparo", type: "single", layout: "two", kicker: "Moagem",
-      when: (d) => isPessoal(d) && d.formato !== "Em grãos" && (d.interesse || []).some((i) => /Lumiar|Fiori|Virtuoso|Aurora|Astro|Kit|ajuda/.test(i)),
+      when: (d) => isPessoal(d) && temPacote(d) && d.formato === "Moído",
       title: (d) => d.perfil === "Presentear alguém" ? "Quem vai ganhar prepara o café como?" : "Como você prepara o seu café?",
       hint: "Assim o café chega na moagem certa para o método.",
       options: (d) => {
-        const o = ["Coador de papel ou V60", "Prensa francesa", "Cafeteira elétrica", "Moka (italiana)", "Máquina de espresso", "Tenho moedor: quero em grãos"];
+        const o = ["Coador de papel ou V60", "Prensa francesa", "Cafeteira elétrica", "Moka (italiana)", "Máquina de espresso"];
         if (d.perfil === "Presentear alguém") o.push("Não sei: podem sugerir");
         return o.map((v) => ({ v }));
       },
       notes: {
-        "Tenho moedor: quero em grãos": "Ótima escolha: em grãos o aroma dura bem mais.",
         "Máquina de espresso": "Para espresso a moagem é bem fina — a gente ajusta para a sua máquina.",
         "Cafeteira elétrica": "Boa notícia: café especial também fica ótimo na cafeteira elétrica, com moagem média.",
       },
@@ -806,7 +822,8 @@ const Qualify = (function () {
 
   function priority() {
     let s = { [LOJA]: 40, [EMPRESA]: 32, "Presentear alguém": 16, "Mim e minha casa": 10 }[data.perfil] || 10;
-    const q = steps[4].options && resolve(steps[4].options).map((o) => o.v).indexOf(data.quantidade);
+    const qs = steps.find((x) => x.id === "quantidade");
+    const q = resolve(qs.options).map((o) => o.v).indexOf(data.quantidade);
     s += [0, 12, 22, 32][q] ?? 4;
     s += { "Brasília · Plano Piloto": 10, "Outras regiões do DF": 8, "Entorno do DF / Goiás": 5 }[data.local] || 3;
     if ((data.interesse || []).length > 1) s += 4;
@@ -814,7 +831,7 @@ const Qualify = (function () {
   }
 
   function summaryRows() {
-    const prep = data.formato === "Em grãos" ? "Em grãos" : data.preparo;
+    const prep = !temPacote(data) ? "" : data.formato === "Moído" && data.preparo ? `Moído · ${data.preparo}` : data.formato;
     return [
       ["Para", data.perfil],
       ["Pedido", (data.interesse || []).join(", ")],
@@ -898,7 +915,6 @@ const Qualify = (function () {
     data = { ...keep };
     locked = new Set();
     Object.entries(opts.preset || {}).forEach(([k, v]) => { data[k] = v; locked.add(k); });
-    if (data.formato === "Em grãos") data.preparo = "Em grãos";
     cur = 0;
     show(0);
     modal.classList.add("is-open");

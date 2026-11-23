@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://images.unsplash.com">
   <!-- Fontes da marca via Adobe Fonts (kit "Solare Cafés - site"): Sofia Pro + Abril Fatface no lugar da Elephant -->
   <link rel="stylesheet" href="https://use.typekit.net/byu8pit.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261123-4">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261123-8">
 </head>
 <body>
 
@@ -102,9 +102,10 @@
       <div class="stage__pack" data-depth="0.6">
         <img src="assets/img/cafes/lumiar-recorte.webp" alt="Pacote do café Solare Lumiar, 250 g, marrom com rótulo verde e faixa de azulejos" width="760" height="861">
       </div>
+      <p class="stage__label" data-depth="0.5"><svg><use href="#i-star"/></svg> Linha Lumiar</p>
       <div class="chip chip--a" data-depth="0.9"><svg><use href="#i-star"/></svg> Notas de chocolate</div>
-      <div class="chip chip--b" data-depth="1.1"><svg><use href="#i-star"/></svg> Grãos, moído ou drip</div>
-      <div class="chip chip--c" data-depth="0.8"><svg class="pin"><use href="#i-pin"/></svg> Cafés de todo o Brasil</div>
+      <div class="chip chip--b" data-depth="1.1"><span>Torra média</span><span class="roast" data-level="3"></span></div>
+      <div class="chip chip--c" data-depth="0.8"><svg><use href="#i-star"/></svg> Doçura marcante</div>
       <div class="beans" aria-hidden="true">
         <svg class="bean" style="--x:8%;--y:16%;--s:34;--r:-30deg;--t:7s" data-depth="1.4"><use href="#i-bean"/></svg>
         <svg class="bean" style="--x:86%;--y:10%;--s:26;--r:40deg;--t:9s" data-depth="1.7"><use href="#i-bean"/></svg>
@@ -123,7 +124,7 @@
 <div class="sparkles" aria-hidden="true"></div>
 <div class="ticker" aria-hidden="true">
   <div class="ticker__track">
-    <span>Cafés de todo o Brasil</span><svg><use href="#i-star"/></svg><span>Produção própria no DF</span><svg><use href="#i-star"/></svg><span>Notas de chocolate</span><svg><use href="#i-star"/></svg><span>Caramelo &amp; melaço</span><svg><use href="#i-star"/></svg><span>Frutados</span><svg><use href="#i-star"/></svg><span>Florais</span><svg><use href="#i-star"/></svg><span>Cafés raros</span><svg><use href="#i-star"/></svg><span>Drip coffee</span><svg><use href="#i-star"/></svg>
+    <span>Cerrado Central · DF</span><svg><use href="#i-star"/></svg><span>Cerrado Goiano · GO</span><svg><use href="#i-star"/></svg><span>Chapada dos Veadeiros · GO</span><svg><use href="#i-star"/></svg><span>Cerrado Mineiro · MG</span><svg><use href="#i-star"/></svg><span>Matas de Minas · MG</span><svg><use href="#i-star"/></svg><span>Campo das Vertentes · MG</span><svg><use href="#i-star"/></svg><span>Mogiana · SP</span><svg><use href="#i-star"/></svg><span>Alta Mogiana · MG</span><svg><use href="#i-star"/></svg><span>Caparaó · MG</span><svg><use href="#i-star"/></svg><span>Chapada Diamantina · BA</span><svg><use href="#i-star"/></svg><span>Norte Pioneiro · PR</span><svg><use href="#i-star"/></svg>
   </div>
 </div>
 
@@ -202,7 +203,7 @@
           <p class="shop__obs"><svg aria-hidden="true"><use href="#i-star"/></svg>Os cafés e as torras de cada linha mudam ao longo do tempo. Consulte pelo WhatsApp qual está disponível.</p>
           <div class="shop__foot">
             <div class="toggle" role="radiogroup" aria-label="Formato do Lumiar">
-              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Em grãos">Grãos</button>
               <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
               <i aria-hidden="true"></i>
             </div>
@@ -234,7 +235,7 @@
           <p class="shop__obs"><svg aria-hidden="true"><use href="#i-star"/></svg>Os cafés e as torras de cada linha mudam ao longo do tempo. Consulte pelo WhatsApp qual está disponível.</p>
           <div class="shop__foot">
             <div class="toggle" role="radiogroup" aria-label="Formato do Fiori">
-              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Em grãos">Grãos</button>
               <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
               <i aria-hidden="true"></i>
             </div>
@@ -266,7 +267,7 @@
           <p class="shop__obs"><svg aria-hidden="true"><use href="#i-star"/></svg>Os cafés e as torras de cada linha mudam ao longo do tempo. Consulte pelo WhatsApp qual está disponível.</p>
           <div class="shop__foot">
             <div class="toggle" role="radiogroup" aria-label="Formato do Virtuoso">
-              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Em grãos">Grãos</button>
               <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
               <i aria-hidden="true"></i>
             </div>
@@ -297,7 +298,7 @@
           <p class="shop__obs"><svg aria-hidden="true"><use href="#i-star"/></svg>Os cafés e as torras de cada linha mudam ao longo do tempo. Consulte pelo WhatsApp qual está disponível.</p>
           <div class="shop__foot">
             <div class="toggle" role="radiogroup" aria-label="Formato do Aurora">
-              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Em grãos">Grãos</button>
               <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
               <i aria-hidden="true"></i>
             </div>
@@ -329,7 +330,7 @@
           <p class="shop__obs"><svg aria-hidden="true"><use href="#i-star"/></svg>Os cafés e as torras de cada linha mudam ao longo do tempo. Consulte pelo WhatsApp qual está disponível.</p>
           <div class="shop__foot">
             <div class="toggle" role="radiogroup" aria-label="Formato do Astro">
-              <button type="button" role="radio" aria-checked="true" data-format="Em grãos">Grãos</button>
+              <button type="button" role="radio" aria-checked="false" data-format="Em grãos">Grãos</button>
               <button type="button" role="radio" aria-checked="false" data-format="Moído">Moído</button>
               <i aria-hidden="true"></i>
             </div>
@@ -341,7 +342,7 @@
       <div class="shop__panel shop__panel--photo" role="tabpanel" id="p-drip" aria-labelledby="t-drip" style="--acc:#E19350" hidden>
         <div class="shop__media">
           <div class="shop__photos">
-            <img class="is-on" src="assets/img/drip-coffee.webp" alt="Caixa de Drip Coffee Solare com grãos de café" width="500" height="560" loading="lazy">
+            <img class="is-on" src="assets/img/cafes/drip-coffee.webp" srcset="assets/img/cafes/drip-coffee-760.webp 760w, assets/img/cafes/drip-coffee.webp 1400w" sizes="(max-width: 960px) 100vw, 660px" alt="Caixa de Drip Coffee Solare com 10 sachês" width="1400" height="1244" loading="lazy">
           </div>
           <span class="shop__tag">10 sachês · 120 g</span>
         </div>
@@ -391,14 +392,24 @@
     </header>
 
     <div class="origins">
-      <figure class="origin-card reveal">
-        <div class="origin-card__img reveal-img"><img src="https://images.unsplash.com/photo-1762686852371-763b689910b2?auto=format&fit=crop&w=1100&q=78" alt="Fileiras de café em uma encosta com montanhas ao fundo" loading="lazy" data-parallax="0.06"></div>
-        <figcaption>
-          <span class="coord">Norte · Nordeste · Centro-Oeste · Sudeste · Sul</span>
-          <b>Cafés de todo o Brasil</b>
-          <span>Escolhidos lote a lote, pelo perfil sensorial</span>
-        </figcaption>
-      </figure>
+      <div class="origin-regions reveal">
+        <span class="coord">Algumas das nossas origens</span>
+        <b>Cafés de todo o Brasil</b>
+        <ul class="regions">
+          <li>Cerrado Central <small>DF</small></li>
+          <li>Cerrado Goiano <small>GO</small></li>
+          <li>Chapada dos Veadeiros <small>GO</small></li>
+          <li>Cerrado Mineiro <small>MG</small></li>
+          <li>Matas de Minas <small>MG</small></li>
+          <li>Campo das Vertentes <small>MG</small></li>
+          <li>Mogiana <small>SP</small></li>
+          <li>Alta Mogiana <small>MG</small></li>
+          <li>Caparaó <small>MG</small></li>
+          <li>Chapada Diamantina <small>BA</small></li>
+          <li>Norte Pioneiro <small>PR</small></li>
+        </ul>
+        <p>E de onde mais tiver café bom.</p>
+      </div>
       <figure class="origin-card origin-card--b reveal" style="--d:.1s">
         <div class="origin-card__img reveal-img"><img src="https://images.unsplash.com/photo-1591297545337-212cc106ee6f?auto=format&fit=crop&w=1100&q=78" alt="Congresso Nacional, em Brasília, ao pôr do sol" loading="lazy" data-parallax="0.06"></div>
         <figcaption>
@@ -467,7 +478,7 @@
           <img data-method-img="coado" class="is-on" src="https://images.unsplash.com/photo-1759259639356-7c6e74eed1ec?auto=format&fit=crop&w=1000&q=78" alt="Água quente sendo despejada sobre o café em um coador V60" loading="lazy">
           <img data-method-img="prensa" src="https://images.unsplash.com/photo-1764088356864-6b8b717d6f88?auto=format&fit=crop&w=1000&q=78" alt="Café sendo servido de uma prensa francesa" loading="lazy">
           <img data-method-img="moka" src="https://images.unsplash.com/photo-1742466851711-24e957c6f2a8?auto=format&fit=crop&w=1000&q=78" alt="Cafeteira moka e xícara de café em um dia de sol" loading="lazy">
-          <img data-method-img="drip" src="assets/img/drip-coffee.webp" alt="Caixa de Drip Coffee Solare" loading="lazy">
+          <img data-method-img="drip" src="assets/img/cafes/drip-coffee.webp" srcset="assets/img/cafes/drip-coffee-760.webp 760w, assets/img/cafes/drip-coffee.webp 1400w" sizes="(max-width: 960px) 100vw, 640px" alt="Caixa de Drip Coffee Solare" loading="lazy">
           <span class="brewer__badge" data-field="sugestao">Sugestão: Lumiar</span>
         </div>
 
@@ -667,6 +678,6 @@
   <span class="fab__tip">Peça o seu café</span>
 </button>
 
-<script src="assets/js/main.js?v=20261123-4" defer></script>
+<script src="assets/js/main.js?v=20261123-8" defer></script>
 </body>
 </html>
