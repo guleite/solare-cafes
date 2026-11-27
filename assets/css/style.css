@@ -556,6 +556,11 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .origin-card__img { position: relative; aspect-ratio: 4 / 4.6; border-radius: 24px; overflow: hidden; }
 .origin-card--b .origin-card__img { aspect-ratio: 4 / 4.2; }
 .origin-card__img img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; }
+/* ilustração do Plano Piloto: imagem e assinatura se movem juntas no parallax */
+.origin-card__art { position: absolute; inset: -8% 0; background: #3B2C24; }
+.origin-card__art img { inset: 0; height: 100%; }
+.origin-card__sign { position: absolute; left: 0; right: 0; top: 75.5%; translate: 0 -50%; text-align: center; color: #ECE7DC; font-size: .95rem; line-height: 1; letter-spacing: .01em; }
+.origin-card .origin-card__sign b { font-weight: 700; font-size: inherit; }
 .origin-card figcaption { display: flex; flex-direction: column; gap: 3px; padding-top: 16px; }
 .coord { font-weight: 600; font-size: .72rem; letter-spacing: .16em; color: var(--cobre); }
 .origin-card b { font-size: 1.12rem; }
@@ -567,11 +572,11 @@ body:not(.is-ready) .hero__stage { opacity: 0; transform: scale(.9) translateY(3
 .regions li { display: flex; align-items: baseline; justify-content: space-between; gap: .6em; padding: 9px 0; border-bottom: 1px solid var(--line); font-weight: 500; font-size: .95rem; }
 .regions small { flex: none; font-weight: 700; font-size: .7rem; letter-spacing: .14em; color: var(--cobre); }
 .origin-regions > p { color: var(--ink-soft); font-size: .93rem; }
-.origin-fact { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; padding: 28px; border-radius: 24px; background: var(--petroleo); color: var(--creme); overflow: hidden; }
-.origin-fact::before { content: ""; position: absolute; inset: 0; background-color: rgba(243, 240, 228, .14); -webkit-mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); -webkit-mask-composite: source-in; mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); mask-composite: intersect; }
-.origin-fact__bean { position: relative; width: 38px; height: 54px; color: #E6B23A; --bean-line: var(--petroleo); animation: bob 4s ease-in-out infinite; }
+.origin-fact { position: relative; align-self: stretch; display: flex; flex-direction: column; justify-content: flex-end; gap: 18px; padding: 28px; border-radius: 24px; background: linear-gradient(165deg, #EAA566 0%, var(--caramelo) 50%, #D47F3F 100%); color: var(--cafe-900); overflow: hidden; }
+.origin-fact::before { content: ""; position: absolute; inset: 0; background-color: rgba(67, 50, 42, .16); -webkit-mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); -webkit-mask-composite: source-in; mask: url("../img/azulejo-linha.svg") 0 0 / 80px, linear-gradient(to bottom, #000, transparent 60%); mask-composite: intersect; }
+.origin-fact__bean { position: relative; width: 38px; height: 54px; color: var(--cafe); --bean-line: var(--caramelo-300); animation: bob 4s ease-in-out infinite; }
 .origin-fact p { position: relative; font-size: 1.02rem; line-height: 1.5; }
-.origin-fact b { display: block; margin-bottom: 6px; font: italic 400 1.4rem/1.1 var(--ff-serif); color: var(--caramelo-300); }
+.origin-fact b { display: block; margin-bottom: 6px; font: italic 400 1.4rem/1.1 var(--ff-serif); color: var(--cafe-900); }
 
 .journey { position: relative; list-style: none; margin: clamp(80px, 10vw, 130px) 0 0; padding: 58px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
 .journey__rail { position: absolute; top: 14px; left: 0; right: 0; height: 2px; background: var(--line-strong); }
