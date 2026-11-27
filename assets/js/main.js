@@ -425,7 +425,7 @@ const manifesto = (function () {
     },
     drip: {
       proporcao: "1 sachê : 120 a 180 ml", moagem: "Já vem moído", agua: "90–94 °C", tempo: "Cerca de 2 min",
-      sugestao: "Sugestão: Drip Coffee Solare", unidade: "Xícaras (1 sachê cada)", ml: 150, mlMin: 120, mlMax: 180, sachet: 12, max: 10,
+      sugestao: "Sugestão: Drip Coffee Solare", unidade: "Xícaras (1 sachê cada)", ml: 150, mlMin: 120, mlMax: 180, sachet: 12, max: 10, padrao: 1,
       steps: [
         "Abra o sachê na linha picotada e encaixe as abas na borda da xícara.",
         "Molhe o pó com um pouco de água e espere 20 segundos.",
@@ -440,6 +440,9 @@ const manifesto = (function () {
   const unitCafe = $('[data-out-unit="cafe"]', root), unitAgua = $('[data-out-unit="agua"]', root);
   const cupsEl = $("[data-cups]", root), cup = $(".calc__cup", root), howto = $("[data-howto]", root);
   let method = "coado", cups = 2;
+  // cada método começa com a sua quantidade padrão (drip: 1 xícara; os outros: 2)
+  // e guarda o que a pessoa escolheu ao trocar de aba
+  const cupsBy = {};
 
   const animateNum = (el, to) => {
     const from = parseFloat(el.textContent) || 0;
@@ -479,6 +482,7 @@ const manifesto = (function () {
   const setMethod = (id, first) => {
     method = id;
     const m = M[id];
+    cups = cupsBy[id] ?? m.padrao ?? 2;
     tabs.forEach((t) => t.setAttribute("aria-selected", t.dataset.method === id));
     imgs.forEach((i) => i.classList.toggle("is-on", i.dataset.methodImg === id));
     $$("[data-field]", root).forEach((f) => {
@@ -491,7 +495,7 @@ const manifesto = (function () {
   };
 
   tabs.forEach((t) => t.addEventListener("click", () => setMethod(t.dataset.method)));
-  $$("[data-step]", root).forEach((b) => b.addEventListener("click", () => { cups += +b.dataset.step; calc(); }));
+  $$("[data-step]", root).forEach((b) => b.addEventListener("click", () => { cups += +b.dataset.step; calc(); cupsBy[method] = cups; }));
   window.addEventListener("resize", placeInk);
   document.fonts && document.fonts.ready.then(placeInk);
   setMethod("coado", true);
