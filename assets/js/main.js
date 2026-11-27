@@ -384,12 +384,12 @@ const manifesto = (function () {
   if (!root) return;
   const M = {
     coado: {
-      proporcao: "1 : 15", moagem: "Média-fina", agua: "92–96 °C", tempo: "2:30 a 3:30",
-      sugestao: "Sugestão: Lumiar moído", unidade: "Xícaras de 150 ml", ml: 150, ratio: 15, max: 8,
+      proporcao: "1 : 15", moagem: "Média-grossa", agua: "92–96 °C", tempo: "2:30 a 3:30",
+      sugestao: "Sugestão: Linha Fiori", unidade: "Xícaras de 150 ml", ml: 150, ratio: 15, max: 8,
       steps: [
         "Escalde o filtro com água quente e descarte essa água.",
         "Coloque o café e molhe o pó com um pouco de água. Espere 30 segundos para ele “abrir”.",
-        "Despeje o restante em espiral, devagar, em duas ou três etapas.",
+        "Despeje o restante em espiral, devagar, em três ou quatro etapas.",
         "Sirva assim que terminar de passar.",
       ],
     },
@@ -413,6 +413,16 @@ const manifesto = (function () {
         "Retire do fogo assim que o café começar a borbulhar.",
       ],
     },
+    espresso: {
+      proporcao: "1 : 2", moagem: "Fina", agua: "90–94 °C", tempo: "25 a 30 s",
+      sugestao: "Sugestão: Linha Astro", unidade: "Doses de 36 ml", ml: 36, ratio: 2, max: 4, aguaUnit: "ml na xícara",
+      steps: [
+        "Moa o café bem fino, na hora, e coloque no porta-filtro.",
+        "Nivele e compacte com o tamper, com pressão firme e por igual.",
+        "Encaixe na máquina e extraia por 25 a 30 segundos.",
+        "Sirva logo, com a crema por cima.",
+      ],
+    },
     drip: {
       proporcao: "1 sachê : 120 a 180 ml", moagem: "Já vem moído", agua: "90–94 °C", tempo: "Cerca de 2 min",
       sugestao: "Sugestão: Drip Coffee Solare", unidade: "Xícaras (1 sachê cada)", ml: 150, mlMin: 120, mlMax: 180, sachet: 12, max: 10,
@@ -427,7 +437,7 @@ const manifesto = (function () {
   const tabs = $$("[data-method]", root), ink = $(".brewer__ink", root);
   const imgs = $$("[data-method-img]", root);
   const out = { cafe: $('[data-out="cafe"]', root), agua: $('[data-out="agua"]', root) };
-  const unitCafe = $('[data-out-unit="cafe"]', root);
+  const unitCafe = $('[data-out-unit="cafe"]', root), unitAgua = $('[data-out-unit="agua"]', root);
   const cupsEl = $("[data-cups]", root), cup = $(".calc__cup", root), howto = $("[data-howto]", root);
   let method = "coado", cups = 2;
 
@@ -452,6 +462,7 @@ const manifesto = (function () {
     const water = m.ml * cups;
     if (m.sachet) { animateNum(out.cafe, cups); unitCafe.textContent = cups > 1 ? "sachês de drip" : "sachê de drip"; }
     else { animateNum(out.cafe, Math.round(water / m.ratio)); unitCafe.textContent = "g de café"; }
+    unitAgua.textContent = m.aguaUnit || "ml de água"; // espresso: volume na xícara, não água usada
     if (m.mlMin) { // drip: faixa de água conforme a concentração preferida
       out.agua._anim = (out.agua._anim || 0) + 1;
       out.agua.textContent = `${m.mlMin * cups}–${m.mlMax * cups}`;
@@ -517,6 +528,8 @@ const Qualify = (function () {
   const isPessoal = (d) => PESSOAL.includes(d.perfil);
   // pedido com café em pacote (as linhas, o kit ou "ajuda para escolher"): aí importa grãos ou moído
   const temPacote = (d) => (d.interesse || []).some((i) => /Lumiar|Fiori|Virtuoso|Aurora|Astro|Kit|ajuda/.test(i));
+  // lista de espera da assinatura (serviço ainda não lançado): não é pedido, é aviso de lançamento
+  const isAssinatura = (d) => (d.interesse || []).some((i) => /Assinatura/.test(i));
 
   const steps = [
     {
@@ -593,7 +606,7 @@ const Qualify = (function () {
         [EMPRESA]: "Quantas pessoas vão aproveitar?",
         [LOJA]: "Qual o consumo aproximado por mês?",
       })[d.perfil] || "Qual a quantidade aproximada?",
-      hint: "Uma estimativa já ajuda a preparar o seu orçamento.",
+      hint: (d) => isAssinatura(d) ? "Assim a gente já pensa no plano ideal para você." : "Uma estimativa já ajuda a preparar o seu orçamento.",
       options: (d) => (({
         "Mim e minha casa": ["1 pacote (250 g)", "2 pacotes (500 g)", "1 kg ou mais", "Ainda não sei"],
         "Presentear alguém": ["1 presente", "2 a 5 presentes", "6 a 20 presentes", "Mais de 20 presentes"],
@@ -614,7 +627,7 @@ const Qualify = (function () {
     },
     {
       id: "contato", type: "contact", kicker: "Quase lá", title: "{nome}, qual o seu WhatsApp?",
-      hint: "É por lá que confirmamos o pedido, os valores e a entrega.",
+      hint: (d) => isAssinatura(d) ? "É por lá que avisamos assim que a assinatura for lançada." : "É por lá que confirmamos o pedido, os valores e a entrega.",
     },
   ];
 
@@ -693,7 +706,7 @@ const Qualify = (function () {
         </button>`).join("")}</div>
         <div class="qnote"><span class="qnote__txt"></span></div>`;
     }
-    return `<span class="eyebrow"><svg><use href="#i-star"/></svg> ${s.kicker}</span><h3>${esc(title(s))}</h3><p class="hint">${s.hint}</p>${html}`;
+    return `<span class="eyebrow"><svg><use href="#i-star"/></svg> ${s.kicker}</span><h3>${esc(title(s))}</h3><p class="hint">${resolve(s.hint)}</p>${html}`;
   }
 
   function show(i, dir = 1) {
@@ -834,7 +847,7 @@ const Qualify = (function () {
     const prep = !temPacote(data) ? "" : data.formato === "Moído" && data.preparo ? `Moído · ${data.preparo}` : data.formato;
     return [
       ["Para", data.perfil],
-      ["Pedido", (data.interesse || []).join(", ")],
+      [isAssinatura(data) ? "Interesse" : "Pedido", (data.interesse || []).join(", ")],
       ["Moagem / formato", prep],
       ["Quantidade", data.quantidade],
       ["Entrega", data.local],
@@ -845,7 +858,8 @@ const Qualify = (function () {
     const lines = [`Olá, Solare! Sou ${data.nome} e vim pelo site.`, ""];
     summaryRows().forEach(([k, v]) => lines.push(`• ${k}: ${v}`));
     if (data.email) lines.push(`• E-mail: ${data.email}`);
-    lines.push("", isPessoal(data) ? "Pode me ajudar a fechar o pedido?" : "Pode me enviar uma proposta?");
+    lines.push("", isAssinatura(data) ? "Quero entrar na lista de espera e saber quando a assinatura for lançada."
+      : isPessoal(data) ? "Pode me ajudar a fechar o pedido?" : "Pode me enviar uma proposta?");
     return lines.join("\n");
   }
 
@@ -856,9 +870,11 @@ const Qualify = (function () {
         <svg class="rays" viewBox="-100 -100 200 200">${Array.from({ length: 16 }, (_, i) => { const a = i / 16 * Math.PI * 2, e = i % 2 ? 78 : 92; return `<line x1="${(Math.cos(a) * 58).toFixed(1)}" y1="${(Math.sin(a) * 58).toFixed(1)}" x2="${(Math.cos(a) * e).toFixed(1)}" y2="${(Math.sin(a) * e).toFixed(1)}"/>`; }).join("")}</svg>
         <span><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </div>
-      <span class="eyebrow"><svg><use href="#i-star"/></svg> Pedido anotado</span>
+      <span class="eyebrow"><svg><use href="#i-star"/></svg> ${isAssinatura(data) ? "Lista de espera" : "Pedido anotado"}</span>
       <h3>Tudo certo, ${esc(n)}!</h3>
-      <p class="hint">Agora é só continuar no WhatsApp: a conversa já abre com o resumo abaixo, e a Solare confirma valores e entrega por lá.</p>
+      <p class="hint">${isAssinatura(data)
+        ? "Agora é só continuar no WhatsApp: a mensagem já vai com o seu interesse na assinatura, e a Solare te avisa por lá assim que ela for lançada."
+        : "Agora é só continuar no WhatsApp: a conversa já abre com o resumo abaixo, e a Solare confirma valores e entrega por lá."}</p>
       <dl class="qsummary">${summaryRows().map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
       <div class="qdone__actions">
         <a class="btn btn--wa btn--lg qwa" href="https://wa.me/${SOLARE_WHATSAPP}?text=${encodeURIComponent(waText())}" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> Continuar no WhatsApp</a>
